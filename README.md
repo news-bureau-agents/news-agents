@@ -47,6 +47,13 @@ Open <http://127.0.0.1:8000>. The built-in server binds only to localhost and ex
 
 Authentication failures return `401`; connectivity, malformed upstream responses, and unexpected upstream statuses return a generic `503`. Responses have `Cache-Control: no-store`, a restrictive Content Security Policy, and other browser security headers. Credentials and tokens are never explicitly logged by application code.
 
+## Private court-data import
+
+The normalized court importer and private-schema migration are documented in
+[`docs/court-import.md`](docs/court-import.md). Validation is local-only by
+default; importing requires an explicit `--apply` and expected linked project
+reference. The importer never applies its schema migration automatically.
+
 ## Tests
 
 The suite mocks all Supabase calls:
@@ -96,7 +103,7 @@ Caddy forwards the original scheme; Gunicorn trusts forwarded HTTPS only from it
 
 In the `news-agents` Supabase project, open **Authentication → Users → Add user** and create an email/password user (confirm it for testing). Your Supabase dashboard account is not automatically an app user. There is no public signup, password reset, or persistent/refresh session UI in this minimal demo. Sign out clears local memory; it does not globally revoke other sessions.
 
-This connects DigitalOcean to Supabase **Auth**. No application database tables or court records have been imported.
+The DigitalOcean app currently uses Supabase **Auth** only. The court export has separately been normalized and imported into Supabase's private `court_data` schema; it is not exposed to the frontend. See [import verification](docs/court-import-verification.md) for aggregate counts and checks.
 
 ## Live browser verification
 

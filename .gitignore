@@ -12,9 +12,12 @@ htmlcov/
 .venv/
 venv/
 
-# Generated CLI metadata and browser screenshots
+# Generated CLI metadata, browser screenshots, and court import artifacts
 supabase/.temp/
 artifacts/
+CasesFiled-*.txt
+court-import-*.sql
+court-import-*.json
 
 # Editors and operating systems
 .idea/
