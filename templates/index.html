@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sign in to Oasis">
+  <title>Oasis · Sign in</title>
+  <link rel="stylesheet" href="/static/styles.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <section class="brand" aria-labelledby="welcome-title">
+      <div class="brand-mark" aria-hidden="true">O</div>
+      <p class="eyebrow">Your calm corner of the web</p>
+      <h1 id="welcome-title">Welcome back to <span>Oasis</span></h1>
+      <p class="lede">Step away from the noise. Sign in to reach your private profile.</p>
+      <div class="orb orb-one" aria-hidden="true"></div>
+      <div class="orb orb-two" aria-hidden="true"></div>
+    </section>
+
+    <section class="panel" aria-labelledby="login-title">
+      <div class="card">
+        <div id="login-view">
+          <p class="kicker">Member access</p>
+          <h2 id="login-title">Sign in</h2>
+          <p class="hint">Use your existing Oasis account.</p>
+
+          <form id="login-form" method="post" action="/">
+            <label for="email">Email address</label>
+            <input id="email" name="email" type="email" autocomplete="username" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" autocomplete="current-password" required>
+
+            <button id="login-button" type="submit">Enter Oasis</button>
+          </form>
+          <p id="login-status" class="status" role="status" aria-live="polite"></p>
+        </div>
+
+        <div id="profile-view" class="hidden">
+          <div class="success-mark" aria-hidden="true">✓</div>
+          <p class="kicker">Protected profile</p>
+          <h2>You’re in.</h2>
+          <p class="hint">Supabase validated this session online.</p>
+          <pre id="profile-output" tabindex="0"></pre>
+          <p id="profile-status" class="status" role="status" aria-live="polite"></p>
+          <button id="logout-button" class="secondary" type="button">Sign out</button>
+        </div>
+      </div>
+      <p class="privacy-note">Your access token stays in this tab’s memory and is cleared when you sign out or reload.</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,7 @@
+oasis.carlunpen.com {
+	encode zstd gzip
+	request_body {
+		max_size 16KB
+	}
+	reverse_proxy 127.0.0.1:8000
+}

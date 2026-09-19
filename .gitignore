@@ -1,0 +1,22 @@
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+
+# Generated CLI metadata and browser screenshots
+supabase/.temp/
+artifacts/
+
+# Editors and operating systems
+.idea/
+.vscode/
+.DS_Store

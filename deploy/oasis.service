@@ -1,0 +1,33 @@
+[Unit]
+Description=Oasis Flask application
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=oasis
+Group=oasis
+WorkingDirectory=/opt/oasis
+EnvironmentFile=/etc/oasis.env
+ExecStart=/opt/oasis/.venv/bin/gunicorn --bind 127.0.0.1:8000 --workers 2 --threads 4 --timeout 30 --access-logfile - --error-logfile - server:app
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+UMask=0027
+
+# Basic service hardening. The application needs outbound HTTPS for Supabase.
+NoNewPrivileges=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+
+[Install]
+WantedBy=multi-user.target
